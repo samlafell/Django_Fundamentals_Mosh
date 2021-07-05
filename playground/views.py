@@ -8,11 +8,14 @@ from django.http import HttpResponse
 # but in Django, the normal 'view' is called a 'template'
 
 def say_hello(request):
+    x = 1
+    y = 2
     # Pull data
     # Transform Data
     # Send Email
     # For now, response
-  return HttpResponse('Hello World')
+  #return HttpResponse('Hello World')
+    return render(request, 'hello.html', {'name' : 'Sam'})
     # Now need to map it to a View
 
 # How can we use a template to return HTML content to the client?
