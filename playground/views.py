@@ -7,9 +7,14 @@ from django.http import HttpResponse
 # in django, it's called a 'view'
 # but in Django, the normal 'view' is called a 'template'
 
-def say_hello(request):
+def calculate():
     x = 1
     y = 2
+    return x
+
+
+def say_hello(request):
+    x = calculate()
     # Pull data
     # Transform Data
     # Send Email
