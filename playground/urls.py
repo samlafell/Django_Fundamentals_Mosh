@@ -16,7 +16,6 @@ from . import views
 
 # but now we don't need playground/, so now...
 
-
 urlpatterns = [
     path('hello/', views.say_hello)
 ]
