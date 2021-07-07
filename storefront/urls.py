@@ -17,15 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+import debug_toolbar
 
 # playground/hello
 # all requests starting with playground/ should get passed to url config in playground app
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('playground/', include('playground.urls'))
+    path('playground/', include('playground.urls')),
+    path("__debug__/", include(debug_toolbar.urls))
 ]
-
-# Determine whether it is currently in debug mode, so in the settings.py  You must configure Debug = True in order to call debug_toolbar
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns.insert(0, path("__debug__/", include(debug_toolbar.urls)))
