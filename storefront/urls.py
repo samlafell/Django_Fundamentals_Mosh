@@ -13,14 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
-import debug_toolbar
+from django.conf import settings
 
 # playground/hello
 # all requests starting with playground/ should get passed to url config in playground app
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('playground/', include('playground.urls')),
-    path('__debug__/', include(debug_toolbar.urls))
+    path('playground/', include('playground.urls'))
 ]
+
+# Determine whether it is currently in debug mode, so in the settings.py  You must configure Debug = True in order to call debug_toolbar
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns.insert(0, path("__debug__/", include(debug_toolbar.urls)))
